@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { NewCardFormComponent } from './new-card-form/new-card-form.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+	{ path: 'new-card', component: NewCardFormComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
