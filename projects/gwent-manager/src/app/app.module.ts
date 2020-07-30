@@ -8,11 +8,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { NewCardFormComponent } from './new-card-form/new-card-form.component';
+import { AuthComponent } from './auth/auth.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NewCardFormComponent
+    NewCardFormComponent,
+    AuthComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
