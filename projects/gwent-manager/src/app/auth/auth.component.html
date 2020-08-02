@@ -1,23 +1,20 @@
 <h1 style="text-align:center">
   Gwent card manager
 </h1>
-<div class="login">
-	<h2 class="login-header">Log in</h2>
-	<form [formGroup]="authForm" class="login-container" (ngSubmit)="signIn()">
-    	<p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
-      		<input type="email" placeholder="Email" formControlName="email">
-    	</p>
-    	<div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
-      		<div *ngIf="formControls.email.errors.required">Email is required</div>
-    	</div>
-    	<p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
-      		<input type="password" placeholder="Password" formControlName="password">
-    	</p>
-    	<div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
-      		<div *ngIf="formControls.password.errors.required">Password is required</div>
-    	</div>
-    	<p>
-      		<input type="submit" value="Log in">
-    	</p>
-  	</form>
-</div>
+
+<form class="form-signin text-center" [formGroup]="authForm" (ngSubmit)="signIn()">
+    <img class="mb-4" src="https://gwent.one/image/icon/nav/cards.png" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" formControlName="email" class="form-control" placeholder="Email address" autofocus>
+    <div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
+        <div *ngIf="formControls.email.errors.required" class="text-left text-danger login-text-danger">Email is required</div>
+    </div>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" class="form-control" placeholder="Password" formControlName="password">
+    <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
+        <div *ngIf="formControls.password.errors.required" class="text-left text-danger login-text-danger">Password is required</div>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Sign in</button>
+    <p class="mt-2 text-muted">&copy; 2020</p>
+</form>
