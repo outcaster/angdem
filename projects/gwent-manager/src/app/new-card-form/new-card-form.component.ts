@@ -52,5 +52,4 @@ export class NewCardFormComponent {
     alert(JSON.stringify(this.cardForm.value));
     this.cardForm.reset();
   }
-
 }

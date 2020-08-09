@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
+import { LoginResponse } from './loginResponse';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,17 +10,22 @@ import { User } from './user';
 
 export class AuthService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
-  public signIn(userData: User){
-    localStorage.setItem('ACCESS_TOKEN', "access_token");
+  public signIn(userData: User) :Observable<LoginResponse> {
+    return this.httpClient
+      .get<LoginResponse>('http://localhost:8000/api/login/?email=' + userData.email + '&password=' + userData.password);
   }
 
-  public isLoggedIn(){
+  public storeCredential(key: string) {
+    localStorage.setItem('ACCESS_TOKEN', key);
+  }
+
+  public isLoggedIn(): boolean {
     return localStorage.getItem('ACCESS_TOKEN') !== null;
   }
 
-  public logout(){
+  public logout() {
     localStorage.removeItem('ACCESS_TOKEN');
   }
 }

@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 import { Router } from  '@angular/router';
 import { User } from  '../user';
 import { AuthService } from  '../auth.service';
+import { Subscription } from "rxjs";
+import { LoginResponse } from '../loginResponse';
 
 @Component({
   selector: 'app-auth',
@@ -16,9 +18,11 @@ export class AuthComponent implements OnInit {
   authForm: FormGroup;
   isSubmitted = false;
 
+  private loginSubscription?: Subscription;
+
   constructor(
-  	private authService: AuthService, 
-  	private router: Router, 
+  	public authService: AuthService, 
+  	public router: Router, 
   	private formBuilder: FormBuilder
   	) { 
 
@@ -39,12 +43,18 @@ export class AuthComponent implements OnInit {
 
   signIn(){
     this.isSubmitted = true;
+    let self = this;
     
     if (this.authForm.invalid) {
-		return;
+		  return;
     }
 
-    this.authService.signIn(this.authForm.value);
-    this.router.navigateByUrl('/new-card');
+    this.authService.signIn(this.authForm.value)
+        .subscribe({
+          next: function(data: LoginResponse) {
+            self.authService.storeCredential(data.api_key)
+            self.router.navigateByUrl('/new-card');
+          }
+        });
   }
 }
