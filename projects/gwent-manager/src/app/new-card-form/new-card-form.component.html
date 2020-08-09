@@ -24,6 +24,9 @@
               <div *ngIf="cardForm.controls['cardProvisionCost'].errors && cardForm.controls['cardProvisionCost'].errors.required" class="danger-font">
               	Provision cost is required.
             	</div>
+              <div *ngIf="cardForm.controls['cardProvisionCost'].errors && cardForm.controls['cardProvisionCost'].errors.maxlength" class="danger-font">
+                Input support only two digits.
+              </div>
             	<div *ngIf="cardForm.controls['cardProvisionCost'].errors && cardForm.controls['cardProvisionCost'].errors.pattern" class="danger-font">
               	Please provide a number.
             	</div>
@@ -39,6 +42,9 @@
             	<div *ngIf="cardForm.controls['unitValue'].errors && cardForm.controls['unitValue'].errors.pattern" class="danger-font">
               	Please provide a number.
             	</div>
+              <div *ngIf="cardForm.controls['unitValue'].errors && cardForm.controls['unitValue'].errors.maxlength" class="danger-font">
+                Input support only two digits.
+              </div>
           </div>
     	</div>
 
