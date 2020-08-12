@@ -11,13 +11,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { NewCardFormComponent } from './new-card-form/new-card-form.component';
 import { AuthComponent } from './auth/auth.component';
 import { AdminComponent } from './admin/admin.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewCardFormComponent,
     AuthComponent,
-    AdminComponent
+    AdminComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
