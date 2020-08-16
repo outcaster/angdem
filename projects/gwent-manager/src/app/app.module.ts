@@ -12,6 +12,8 @@ import { NewCardFormComponent } from './new-card-form/new-card-form.component';
 import { AuthComponent } from './auth/auth.component';
 import { AdminComponent } from './admin/admin.component';
 import { LogoutComponent } from './logout/logout.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { NewFormPageComponent } from './new-form-page/new-form-page.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { LogoutComponent } from './logout/logout.component';
     NewCardFormComponent,
     AuthComponent,
     AdminComponent,
-    LogoutComponent
+    LogoutComponent,
+    LoginPageComponent,
+    NewFormPageComponent
   ],
   imports: [
     BrowserModule,
