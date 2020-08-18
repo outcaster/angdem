@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 import { Router } from  '@angular/router';
 import { AuthService } from  '../auth.service';
-import { Subscription } from "rxjs";
 import { LoginResponse } from '../loginResponse';
 import { HttpErrorResponse } from "@angular/common/http";
 
@@ -19,8 +18,6 @@ export class AuthComponent implements OnInit {
   isSubmitted :boolean = false;
   loginInvalid :boolean = false;
   loginError :boolean   = false;
-
-  private loginSubscription?: Subscription;
 
   constructor(
   	public authService: AuthService, 
