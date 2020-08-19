@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CardService } from  '../card.service';
+import { SimpleResponse } from '../simple-response';
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
   selector: 'app-new-card-form',
@@ -18,7 +21,6 @@ export class NewCardFormComponent {
     { name: 'Syndicate' },
     { name: 'Neutral' }
   ];
-
 
   cardForm: FormGroup = new FormGroup({
     faction: new FormControl('', Validators.required),
@@ -48,8 +50,22 @@ export class NewCardFormComponent {
     cardText: new FormControl('', [])
   });
 
+  constructor(
+    public cardService: CardService
+  ) { }
+
   submit() {
-    alert(JSON.stringify(this.cardForm.value));
-    this.cardForm.reset();
+    let self = this;
+
+    this.cardService.post(this.cardForm.value)
+      .subscribe({
+        next: function(data: SimpleResponse) {
+          self.cardForm.reset();
+          alert("card successfully saved");
+        },
+        error: function(err: HttpErrorResponse ) {
+          console.log(err);
+        }
+      });
   }
 }
