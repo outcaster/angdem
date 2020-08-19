@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CardService } from  '../card.service';
-import { GetAllCardsResponse } from '../get-all-cards-response';
+import { Response } from '../response';
 import { Card } from  '../card';
 import { HttpErrorResponse } from "@angular/common/http";
 
@@ -10,6 +10,7 @@ import { HttpErrorResponse } from "@angular/common/http";
   templateUrl: './card-table.component.html',
   styleUrls: ['./card-table.component.scss']
 })
+
 export class CardTableComponent implements OnInit {
   cards: Card[] = [];
 
@@ -22,7 +23,7 @@ export class CardTableComponent implements OnInit {
 
     this.cardService.getAll()
       .subscribe({
-        next: function(data: GetAllCardsResponse) {
+        next: function(data: Response<Card>) {
           self.cards = data.result;
         },
         error: function(err: HttpErrorResponse ) {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { GetAllCardsResponse } from './get-all-cards-response';
+import { Card } from "./card";
+import { Response } from './response';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -12,13 +13,13 @@ export class CardService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getAll() :Observable<GetAllCardsResponse> {
+  public getAll() :Observable<Response<Card>> {
     let header = {
       headers: new HttpHeaders()
         .set('Authorization',  'bearer ' + localStorage.getItem('ACCESS_TOKEN'))
     }
 
     return this.httpClient
-      .get<GetAllCardsResponse>('http://localhost:8000/api/card/all', header);
+      .get<Response<Card>>('http://localhost:8000/api/card/all', header);
   }
 }
