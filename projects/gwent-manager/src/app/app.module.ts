@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS , HttpClientModule } from '@angular/common/http';
 import { NewCardFormComponent } from './new-card-form/new-card-form.component';
 import { AuthComponent } from './auth/auth.component';
 import { AdminComponent } from './admin/admin.component';
@@ -15,6 +15,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { NewFormPageComponent } from './new-form-page/new-form-page.component';
 import { CardTableComponent } from './card-table/card-table.component';
+import { AuthHeaderInterceptor } from './auth-header.interceptor';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,9 @@ import { CardTableComponent } from './card-table/card-table.component';
     NgbModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthHeaderInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

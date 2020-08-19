@@ -14,12 +14,7 @@ export class CardService {
   constructor(private httpClient: HttpClient) { }
 
   public getAll() :Observable<Response<Card>> {
-    let header = {
-      headers: new HttpHeaders()
-        .set('Authorization',  'bearer ' + localStorage.getItem('ACCESS_TOKEN'))
-    }
-
     return this.httpClient
-      .get<Response<Card>>('http://localhost:8000/api/card/all', header);
+      .get<Response<Card>>('http://localhost:8000/api/card/all');
   }
 }
