@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CardService } from  '../card.service';
-import { SimpleResponse } from '../simple-response';
+import { BaseResponse } from '../base-response';
 import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
@@ -59,7 +59,7 @@ export class NewCardFormComponent {
 
     this.cardService.post(this.cardForm.value)
       .subscribe({
-        next: function(data: SimpleResponse) {
+        next: function(data: BaseResponse) {
           self.cardForm.reset();
           alert("card successfully saved");
         },

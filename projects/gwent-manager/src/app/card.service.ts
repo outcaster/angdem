@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Card } from "./card";
 import { Response } from './response';
-import { SimpleResponse } from './simple-response';
+import { BaseResponse } from './base-response';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -19,7 +19,7 @@ export class CardService {
       .get<Response<Card>>('http://localhost:8000/api/card/all');
   }
 
-  public post(form: any) :Observable<SimpleResponse> {
+  public post(form: any) :Observable<BaseResponse> {
     let body: any = new FormData();
     body.append("faction", form.faction);
     body.append("name", form.cardName);
@@ -27,6 +27,6 @@ export class CardService {
     body.append("cost", form.cardProvisionCost);
     body.append("text", form.cardText);
 
-    return this.httpClient.post<SimpleResponse>('http://localhost:8000/api/card', body);
+    return this.httpClient.post<BaseResponse>('http://localhost:8000/api/card', body);
   }
 }

@@ -1,4 +1,5 @@
-export interface Response<T> {
-    status: string;
+import { BaseResponse } from './base-response';
+
+export interface Response<T> extends BaseResponse {
     result: T[];
 }
