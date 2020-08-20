@@ -4,6 +4,7 @@ import { CardService } from  '../card.service';
 import { Response } from '../response';
 import { Card } from  '../card';
 import { HttpErrorResponse } from "@angular/common/http";
+import { MessengerService } from '../messenger.service';
 
 @Component({
   selector: 'app-card-table',
@@ -15,12 +16,22 @@ export class CardTableComponent implements OnInit {
   cards: Card[] = [];
 
   constructor(
-    public cardService: CardService
+    public cardService: CardService,
+    public messenger: MessengerService
   ) { }
 
   ngOnInit(): void {
     let self = this;
 
+    this.messenger.subscriber$.subscribe(data => {
+      this.loadTable();
+    });
+
+    this.loadTable();
+  }
+
+  loadTable(): void {
+    let self = this;
     this.cardService.getAll()
       .subscribe({
         next: function(data: Response<Card>) {

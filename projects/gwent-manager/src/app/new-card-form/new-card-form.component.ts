@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CardService } from  '../card.service';
 import { BaseResponse } from '../base-response';
 import { HttpErrorResponse } from "@angular/common/http";
+import { MessengerService } from '../messenger.service';
 
 @Component({
   selector: 'app-new-card-form',
@@ -51,7 +52,8 @@ export class NewCardFormComponent {
   });
 
   constructor(
-    public cardService: CardService
+    public cardService: CardService,
+    public messenger: MessengerService
   ) { }
 
   submit() {
@@ -60,8 +62,9 @@ export class NewCardFormComponent {
     this.cardService.post(this.cardForm.value)
       .subscribe({
         next: function(data: BaseResponse) {
-          self.cardForm.reset();
           alert("card successfully saved");
+          self.messenger.emitData("new card saved");
+          self.cardForm.reset();
         },
         error: function(err: HttpErrorResponse ) {
           console.log(err);
