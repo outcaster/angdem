@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CardService } from  '../business/service/card.service';
-import { BaseResponse } from '../interfaces/base-response';
+import { CardService } from  '../../business/service/card.service';
+import { BaseResponse } from '../../interfaces/base-response';
 import { HttpErrorResponse } from "@angular/common/http";
-import { MessengerService } from '../business/service/messenger.service';
+import { MessengerService } from '../../business/service/messenger.service';
 
 @Component({
   selector: 'app-new-card-form',

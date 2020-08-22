@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 //components for routes
-import { LoginPageComponent } from './login-page/login-page.component';
-import { NewFormPageComponent } from './new-form-page/new-form-page.component';
+import { LoginPageComponent } from './components/pages/login-page/login-page.component';
+import { NewFormPageComponent } from './components/pages/new-form-page/new-form-page.component';
 
 //guards
 import { AuthGuard } from './business/service/auth.guard';

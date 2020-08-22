@@ -8,12 +8,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS , HttpClientModule } from '@angular/common/http';
-import { NewCardFormComponent } from './new-card-form/new-card-form.component';
-import { AuthComponent } from './auth/auth.component';
-import { LogoutComponent } from './logout/logout.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { NewFormPageComponent } from './new-form-page/new-form-page.component';
-import { CardTableComponent } from './card-table/card-table.component';
+import { NewCardFormComponent } from './components/new-card-form/new-card-form.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { LoginPageComponent } from './components/pages/login-page/login-page.component';
+import { NewFormPageComponent } from './components/pages/new-form-page/new-form-page.component';
+import { CardTableComponent } from './components/card-table/card-table.component';
 import { AuthHeaderInterceptor } from './business/interceptor/auth-header.interceptor';
 
 @NgModule({
