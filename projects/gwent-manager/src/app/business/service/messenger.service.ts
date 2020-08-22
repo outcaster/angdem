@@ -12,7 +12,7 @@ export class MessengerService {
 
   constructor() { }
   
-  emitData(data: string) {
+  emitData(data: any) {
     this.observer.next(data);
   }
 }

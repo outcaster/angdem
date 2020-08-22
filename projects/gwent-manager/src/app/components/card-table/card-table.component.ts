@@ -15,6 +15,11 @@ import { MessengerService } from '../../business/service/messenger.service';
 export class CardTableComponent implements OnInit {
   cards: Card[] = [];
 
+  isCard = (variableToCheck: any): variableToCheck is Card => 
+    (variableToCheck as Card).faction !== undefined &&
+    (variableToCheck as Card).power !== undefined &&
+    (variableToCheck as Card).cost !== undefined;
+
   constructor(
     public cardService: CardService,
     public messenger: MessengerService
@@ -23,8 +28,10 @@ export class CardTableComponent implements OnInit {
   ngOnInit(): void {
     let self = this;
 
-    this.messenger.subscriber$.subscribe(data => {
-      this.loadTable();
+    this.messenger.subscriber$.subscribe((data: any) => {
+      if (self.isCard(data)) {
+        this.cards.push(data);
+      }
     });
 
     this.loadTable();

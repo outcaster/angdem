@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CardService } from  '../../business/service/card.service';
-import { BaseResponse } from '../../interfaces/base-response';
+import { SingleResponse } from '../../interfaces/single-response';
+import { Card } from '../../interfaces/card';
 import { HttpErrorResponse } from "@angular/common/http";
 import { MessengerService } from '../../business/service/messenger.service';
 
@@ -61,9 +62,9 @@ export class NewCardFormComponent {
 
     this.cardService.post(this.cardForm.value)
       .subscribe({
-        next: function(data: BaseResponse) {
+        next: function(data: SingleResponse<Card>) {
           alert("card successfully saved");
-          self.messenger.emitData("new card saved");
+          self.messenger.emitData(data.result);
           self.cardForm.reset();
         },
         error: function(err: HttpErrorResponse ) {
