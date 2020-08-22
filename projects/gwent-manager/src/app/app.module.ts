@@ -10,7 +10,6 @@ import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS , HttpClientModule } from '@angular/common/http';
 import { NewCardFormComponent } from './new-card-form/new-card-form.component';
 import { AuthComponent } from './auth/auth.component';
-import { AdminComponent } from './admin/admin.component';
 import { LogoutComponent } from './logout/logout.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { NewFormPageComponent } from './new-form-page/new-form-page.component';
@@ -22,7 +21,6 @@ import { AuthHeaderInterceptor } from './auth-header.interceptor';
     AppComponent,
     NewCardFormComponent,
     AuthComponent,
-    AdminComponent,
     LogoutComponent,
     LoginPageComponent,
     NewFormPageComponent,

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CardService } from  '../card.service';
-import { Response } from '../response';
-import { Card } from  '../card';
+import { Response } from '../interfaces/response';
+import { Card } from  '../interfaces/card';
 import { HttpErrorResponse } from "@angular/common/http";
 import { MessengerService } from '../messenger.service';
 
