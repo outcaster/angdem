@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CardService } from  '../card.service';
+import { CardService } from  '../business/service/card.service';
 import { Response } from '../interfaces/response';
 import { Card } from  '../interfaces/card';
 import { HttpErrorResponse } from "@angular/common/http";
-import { MessengerService } from '../messenger.service';
+import { MessengerService } from '../business/service/messenger.service';
 
 @Component({
   selector: 'app-card-table',

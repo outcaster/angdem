@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 import { Router } from  '@angular/router';
-import { AuthService } from  '../auth.service';
-import { LoginResponse } from '../loginResponse';
+import { AuthService } from  '../business/service/auth.service';
+import { LoginResponse } from '../interfaces/loginResponse';
 import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({

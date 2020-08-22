@@ -14,7 +14,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { NewFormPageComponent } from './new-form-page/new-form-page.component';
 import { CardTableComponent } from './card-table/card-table.component';
-import { AuthHeaderInterceptor } from './auth-header.interceptor';
+import { AuthHeaderInterceptor } from './business/interceptor/auth-header.interceptor';
 
 @NgModule({
   declarations: [

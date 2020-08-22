@@ -6,7 +6,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { NewFormPageComponent } from './new-form-page/new-form-page.component';
 
 //guards
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './business/service/auth.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'auth'},

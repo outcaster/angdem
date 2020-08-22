@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { Card } from "./interfaces/card";
-import { Response } from './interfaces/response';
-import { BaseResponse } from './interfaces/base-response';
+import { Card } from "../../interfaces/card";
+import { Response } from '../../interfaces/response';
+import { BaseResponse } from '../../interfaces/base-response';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
