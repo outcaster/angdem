@@ -28,7 +28,7 @@ export class CardTableComponent implements OnInit {
   ngOnInit(): void {
     let self = this;
 
-    this.messenger.subscriber$.subscribe((data: any) => {
+    this.messenger.cardSaved$.subscribe((data: any) => {
       if (self.isCard(data)) {
         this.cards.push(data);
       }
@@ -48,5 +48,9 @@ export class CardTableComponent implements OnInit {
           console.log(err);
         }
       });
+  }
+
+  loadCard(card: Card): void {
+    this.messenger.emitCardLoaded(card);
   }
 }

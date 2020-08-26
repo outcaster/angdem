@@ -49,13 +49,25 @@ export class NewCardFormComponent {
     		Validators.pattern('[0-9]*')
     	]
     ),
-    cardText: new FormControl('', [])
+    cardText: new FormControl('', []),
+    cardId: new FormControl()
   });
 
   constructor(
     public cardService: CardService,
     public messenger: MessengerService
   ) { }
+
+  ngOnInit(): void {
+    this.messenger.cardLoaded$.subscribe((data: any) => {
+      this.cardForm.controls['cardName'].setValue(data.name);
+      this.cardForm.controls['faction'].setValue(data.faction);
+      this.cardForm.controls['cardProvisionCost'].setValue(data.cost);
+      this.cardForm.controls['unitValue'].setValue(data.power);
+      this.cardForm.controls['cardText'].setValue(data.text);
+      this.cardForm.controls['cardId'].setValue(data.id);
+    })
+  }
 
   submit() {
     let self = this;
@@ -64,12 +76,16 @@ export class NewCardFormComponent {
       .subscribe({
         next: function(data: SingleResponse<Card>) {
           alert("card successfully saved");
-          self.messenger.emitData(data.result);
+          self.messenger.emitCardSaved(data.result);
           self.cardForm.reset();
         },
         error: function(err: HttpErrorResponse ) {
           console.log(err);
         }
       });
+  }
+
+  clear() {
+    this.cardForm.reset();
   }
 }

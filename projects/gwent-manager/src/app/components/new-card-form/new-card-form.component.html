@@ -62,8 +62,12 @@
 		<textarea class="form-control" formControlName="cardText"></textarea>
 	</div>
 
+	<input type="hidden" formControlName="cardId" />
+
 	<div class="text-center">
-		<button [disabled]="cardForm.invalid || cardForm.disabled"
-			class="btn btn-primary col-md-6 col-xs-12">Save</button>
+		<button type="submit" [disabled]="cardForm.invalid || cardForm.disabled"
+			class="btn btn-primary col-md-4 col-xs-12">Save</button>
+		<button (click)="clear()" type="reset"
+			class="btn btn-info col-md-4 offset-md-2 col-xs-12">Clear</button>
 	</div>
 </form>
