@@ -42,4 +42,8 @@ export class CardService {
 
     return this.httpClient.post<BaseResponse>('http://localhost:8000/api/card/update', body);
   }
+
+  public delete(id: number) :Observable<BaseResponse> {
+    return this.httpClient.delete<BaseResponse>('http://localhost:8000/api/card/' + id);
+  }
 }

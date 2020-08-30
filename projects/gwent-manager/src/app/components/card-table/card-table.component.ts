@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { CardService } from  '../../business/service/card.service';
 import { Response } from '../../interfaces/response';
+import { BaseResponse } from '../../interfaces/base-response';
 import { Card } from  '../../interfaces/card';
 import { HttpErrorResponse } from "@angular/common/http";
 import { MessengerService } from '../../business/service/messenger.service';
@@ -56,5 +57,18 @@ export class CardTableComponent implements OnInit {
 
   loadCard(card: Card): void {
     this.messenger.emitCardLoaded(card);
+  }
+
+  deleteCard(card: Card): void {
+    let self = this;
+    this.cardService.delete(card.id)
+      .subscribe({
+        next: function(data: BaseResponse) {
+          self.loadTable();
+        },
+        error: function(err: HttpErrorResponse ) {
+          console.log(err);
+        }
+      });
   }
 }
