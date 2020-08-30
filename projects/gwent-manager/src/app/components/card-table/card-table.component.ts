@@ -34,6 +34,10 @@ export class CardTableComponent implements OnInit {
       }
     });
 
+    this.messenger.cardUpdated$.subscribe(() => {
+      this.loadTable();
+    });
+
     this.loadTable();
   }
 

@@ -14,6 +14,9 @@ export class MessengerService {
   cardLoadedObserver = new Subject();
   public cardLoaded$ = this.cardLoadedObserver.asObservable();
 
+  cardUpdatedObserver = new Subject();
+  public cardUpdated$ = this.cardUpdatedObserver.asObservable();
+
   constructor() { }
   
   emitCardSaved(data: any) {
@@ -22,5 +25,9 @@ export class MessengerService {
 
   emitCardLoaded(card: Card) {
     this.cardLoadedObserver.next(card);
+  }
+
+  emitCardUpdated() {
+    this.cardUpdatedObserver.next();
   }
 }

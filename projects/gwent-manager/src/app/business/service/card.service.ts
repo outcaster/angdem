@@ -30,4 +30,16 @@ export class CardService {
 
     return this.httpClient.post<SingleResponse<Card>>('http://localhost:8000/api/card', body);
   }
+
+  public put(form: any) :Observable<BaseResponse> {
+    let body: any = new FormData();
+    body.append("faction", form.faction);
+    body.append("name", form.cardName);
+    body.append("power", form.unitValue);
+    body.append("cost", form.cardProvisionCost);
+    body.append("text", form.cardText);
+    body.append("id", form.cardId);
+
+    return this.httpClient.post<BaseResponse>('http://localhost:8000/api/card/update', body);
+  }
 }
