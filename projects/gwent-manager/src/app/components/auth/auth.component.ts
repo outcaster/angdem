@@ -5,6 +5,7 @@ import { Router } from  '@angular/router';
 import { AuthService } from  '../../business/service/auth.service';
 import { LoginResponse } from '../../interfaces/loginResponse';
 import { HttpErrorResponse } from "@angular/common/http";
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-auth',
@@ -15,9 +16,10 @@ import { HttpErrorResponse } from "@angular/common/http";
 export class AuthComponent implements OnInit {
 
   authForm: FormGroup;
-  isSubmitted :boolean = false;
+  isSubmitted :boolean  = false;
   loginInvalid :boolean = false;
   loginError :boolean   = false;
+  disabled :boolean     = false;
 
   constructor(
   	public authService: AuthService, 
@@ -50,11 +52,13 @@ export class AuthComponent implements OnInit {
 		  return;
     }
 
+    this.disabled = true;
     this.authService.signIn(this.authForm.value)
       .subscribe({
         next: function(data: LoginResponse) {
           self.authService.storeCredential(data.api_key)
           self.router.navigateByUrl('/new-card');
+          self.disabled = false;
         },
         error: function(err: HttpErrorResponse ) {
           if (err.status == 401) {
@@ -62,6 +66,7 @@ export class AuthComponent implements OnInit {
           } else {
             self.loginError = true;
           }
+          self.disabled = false;
         }
       });
   }
