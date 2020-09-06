@@ -5,7 +5,6 @@ import { Router } from  '@angular/router';
 import { AuthService } from  '../../business/service/auth.service';
 import { LoginResponse } from '../../interfaces/loginResponse';
 import { HttpErrorResponse } from "@angular/common/http";
-import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-auth',
