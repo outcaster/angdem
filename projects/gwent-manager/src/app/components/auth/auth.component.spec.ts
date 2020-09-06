@@ -5,7 +5,7 @@ import { AuthComponent } from './auth.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AuthService } from  '../../business/service/auth.service';
 import { FormBuilder } from  '@angular/forms';
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AuthComponent', () => {
   let component: AuthComponent;
@@ -15,13 +15,12 @@ describe('AuthComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ AuthComponent ],
       imports: [
+        HttpClientTestingModule,
         RouterTestingModule.withRoutes([]),
       ],
       providers: [
         AuthService,
-        FormBuilder,
-        HttpClient,
-        HttpHandler
+        FormBuilder
       ]
     })
     .compileComponents();

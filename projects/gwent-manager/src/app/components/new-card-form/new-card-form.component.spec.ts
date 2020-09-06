@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewCardFormComponent } from './new-card-form.component';
 
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MessengerService } from '../../business/service/messenger.service';
 import { CardService } from  '../../business/service/card.service';
 
@@ -13,11 +13,12 @@ describe('NewCardFormComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ NewCardFormComponent ],
+      imports: [
+        HttpClientTestingModule
+      ],
       providers: [
         CardService,
-        MessengerService,
-        HttpClient,
-        HttpHandler
+        MessengerService
       ]
     })
     .compileComponents();
