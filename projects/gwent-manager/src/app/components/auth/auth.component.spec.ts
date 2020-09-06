@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AuthComponent } from './auth.component';
 
-import { Router } from  '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AuthService } from  '../../business/service/auth.service';
 import { FormBuilder } from  '@angular/forms';
 import { HttpClient, HttpHandler } from '@angular/common/http';
@@ -14,9 +14,11 @@ describe('AuthComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AuthComponent ],
+      imports: [
+        RouterTestingModule.withRoutes([]),
+      ],
       providers: [
         AuthService,
-        Router,
         FormBuilder,
         HttpClient,
         HttpHandler
