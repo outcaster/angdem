@@ -33,12 +33,6 @@ import { AuthHeaderInterceptor } from './business/interceptor/auth-header.interc
     NgbModule,
     HttpClientModule
   ],
-  exports: [
-    AuthComponent,
-    NewCardFormComponent,
-    CardTableComponent,
-    LogoutComponent,
-  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthHeaderInterceptor, multi: true }
   ],
