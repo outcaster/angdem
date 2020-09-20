@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 import { Router } from  '@angular/router';
 import { AuthService } from  '../../business/service/auth.service';
+import { finalize } from 'rxjs/operators';
 import { LoginResponse } from '../../interfaces/loginResponse';
 import { HttpErrorResponse } from "@angular/common/http";
 
@@ -41,7 +42,7 @@ export class AuthComponent implements OnInit {
   	return this.authForm.controls; 
   }
 
-  signIn(){
+  signIn(): void {
     this.isSubmitted        = true;
     this.loginInvalid       = false;
     this.loginError         = false;
@@ -53,11 +54,14 @@ export class AuthComponent implements OnInit {
 
     this.disabled = true;
     this.authService.signIn(this.authForm.value)
-      .subscribe({
+      .pipe(
+        finalize(() => {
+          self.disabled = false
+        })
+      ).subscribe({
         next: function(data: LoginResponse) {
           self.authService.storeCredential(data.api_key)
           self.router.navigateByUrl('/new-card');
-          self.disabled = false;
         },
         error: function(err: HttpErrorResponse ) {
           if (err.status == 401) {
@@ -65,8 +69,7 @@ export class AuthComponent implements OnInit {
           } else {
             self.loginError = true;
           }
-          self.disabled = false;
         }
-      });
+      })
   }
 }
