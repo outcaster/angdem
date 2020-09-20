@@ -3,9 +3,12 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AuthComponent } from './auth.component';
 
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { AuthService } from  '../../business/service/auth.service';
 import { FormBuilder } from  '@angular/forms';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 
 describe('AuthComponent', () => {
   let component: AuthComponent;
@@ -17,6 +20,7 @@ describe('AuthComponent', () => {
       imports: [
         HttpClientTestingModule,
         RouterTestingModule.withRoutes([]),
+        ReactiveFormsModule
       ],
       providers: [
         AuthService,

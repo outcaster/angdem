@@ -4,9 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS , HttpClientModule } from '@angular/common/http';
 import { NewCardFormComponent } from './components/new-card-form/new-card-form.component';
 import { AuthComponent } from './components/auth/auth.component';

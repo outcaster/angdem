@@ -1,8 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 import { NewCardFormComponent } from './new-card-form.component';
 
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MessengerService } from '../../business/service/messenger.service';
 import { CardService } from  '../../business/service/card.service';
 
@@ -14,7 +16,8 @@ describe('NewCardFormComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ NewCardFormComponent ],
       imports: [
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        ReactiveFormsModule
       ],
       providers: [
         CardService,
